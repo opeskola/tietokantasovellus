@@ -4,7 +4,11 @@ Tässä työssä tehdään www-pohjainen neuvontapalvelu, johon on koottu opiske
 esitetyt kysymykset ja niiden vastaukset. Kysymyksiä voidaan lajitella aihepiirien mukaan ja järjestelmää pystyvät
 käyttämään sekä opiskelijat että opintoneuvojat. Jos opiskelija ei löydä haluamaansa kysymystä, hän voi välittää kysymyksen
 opintoneuvojalle neuvontapalvelun kautta. Neuvoja voi sitten sen lisäksi, että vastaa yksityisesti, myös laittaa vastauksen
-järjestelmään. 
+järjestelmään. Tavoitteena on, että www-pohjaisen neuvontapalvelun ansiosta tieto on paremmin saatavilla opiskelijoille.
+
+Työ toteutetaan tietojenkäsittelytieteen laitoksen users-palvelimella. Ohjelmointikielenä on php ja tietokantana
+postgreSQL. Ohjelma voitaisiin tehdä myös käyttäen MySQL-tietokantaa, mutta on mahdollista, että tietokantojen
+syntakseissa on eroavaisuuksia, joten kannan siirto postgreSQL:stä MySQL:ään ei välttämättä suju täysin automaattisesti.
 
 2. Yleiskuva järjestelmästä
 
