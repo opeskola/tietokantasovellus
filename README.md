@@ -7,3 +7,6 @@ Linkki sovellukseen: http://opeskola.users.cs.helsinki.fi/tsoha/
 
 Linkki dokumenttiin: https://github.com/opeskola/tietokantasovellus/blob/master/htdocs/tsoha/doc/dokumentaatio.pdf
 
+HUOM! kun klikkaat linkkiä dokumenttiin, niin pdf-tiedosto ei
+heti aukea vaan aukeavasta sivusta pitää klikata "View Raw". Tämän jälkeen
+aukeaa linkki, josta voi tallentaa pdf:n koneelle.
