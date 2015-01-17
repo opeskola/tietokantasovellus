@@ -1,5 +1,11 @@
 1. Johdanto
 
+Tässä työssä tehdään www-pohjainen neuvontapalvelu, johon on koottu opiskelijoiden opintoneuvontaan useimmiten 
+esitetyt kysymykset ja niiden vastaukset. Kysymyksiä voidaan lajitella aihepiirien mukaan ja järjestelmää pystyvät
+käyttämään sekä opiskelijat että opintoneuvojat. Jos opiskelija ei löydä haluamaansa kysymystä, hän voi välittää kysymyksen
+opintoneuvojalle neuvontapalvelun kautta. Neuvoja voi sitten sen lisäksi, että vastaa yksityisesti, myös laittaa vastauksen
+järjestelmään. 
+
 2. Yleiskuva järjestelmästä
 
 Käyttötapauskaavio
