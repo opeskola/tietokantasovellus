@@ -12,8 +12,8 @@ heti aukea vaan aukeavasta sivusta pitää klikata "View Raw". Tämän jälkeen
 aukeaa linkki, josta voi tallentaa pdf:n koneelle.
 
 Hyödyllisiä Bootstrap-linkkejä:
-http://getbootstrap.com/css/#type (tekstin asettelu ja tyylittely)
-http://getbootstrap.com/css/#tables (taulukot)
-http://getbootstrap.com/css/#forms (lomakkeet)
-http://getbootstrap.com/css/#buttons (painikkeet)
+http://getbootstrap.com/css/#type  
+http://getbootstrap.com/css/#tables
+http://getbootstrap.com/css/#forms
+http://getbootstrap.com/css/#buttons
 
