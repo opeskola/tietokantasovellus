@@ -11,6 +11,8 @@ HUOM! kun klikkaat linkkiä dokumenttiin, niin pdf-tiedosto ei
 heti aukea vaan aukeavasta sivusta pitää klikata "View Raw". Tämän jälkeen
 aukeaa linkki, josta voi tallentaa pdf:n koneelle.
 
+
+
 Hyödyllisiä Bootstrap-linkkejä:
 
 tekstin asettelu ja tyylittely: http://getbootstrap.com/css/#type
@@ -22,9 +24,11 @@ lomakkeet: http://getbootstrap.com/css/#forms
 painikkeet: http://getbootstrap.com/css/#buttons
 
 
+
 Tässä linkit staattisiin html-sivuihin:
 
 aloitussivu: http://opeskola.users.cs.helsinki.fi/tsoha/suunnitelmat/first_page
+
 aihelista: http://opeskola.users.cs.helsinki.fi/tsoha/suunnitelmat/themas
 
 uusien kysymysten lista: http://opeskola.users.cs.helsinki.fi/tsoha/suunnitelmat/new_questions_list
