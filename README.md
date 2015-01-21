@@ -12,11 +12,9 @@ heti aukea vaan aukeavasta sivusta pitää klikata "View Raw". Tämän jälkeen
 aukeaa linkki, josta voi tallentaa pdf:n koneelle.
 
 
-
 Hyödyllisiä Bootstrap-linkkejä:
 
 tekstin asettelu ja tyylittely: http://getbootstrap.com/css/#type
-
 taulukot: http://getbootstrap.com/css/#tables
 
 lomakkeet: http://getbootstrap.com/css/#forms
