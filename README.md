@@ -13,9 +13,25 @@ aukeaa linkki, josta voi tallentaa pdf:n koneelle.
 
 Hyödyllisiä Bootstrap-linkkejä:
 
-tekstin asettelu ja tyylittely: http://getbootstrap.com/css/#type "\n"
+tekstin asettelu ja tyylittely: http://getbootstrap.com/css/#type
+
 taulukot: http://getbootstrap.com/css/#tables
+
 lomakkeet: http://getbootstrap.com/css/#forms
+
 painikkeet: http://getbootstrap.com/css/#buttons
+
+
+Tässä linkit staattisiin html-sivuihin:
+
+aloitussivu: http://opeskola.users.cs.helsinki.fi/tsoha/suunnitelmat/first_page
+
+aihelista: http://opeskola.users.cs.helsinki.fi/tsoha/suunnitelmat/themas
+
+uusien kysymysten lista: http://opeskola.users.cs.helsinki.fi/tsoha/suunnitelmat/new_questions_list
+
+kysymyksen tekeminen: http://opeskola.users.cs.helsinki.fi/tsoha/suunnitelmat/make_question
+
+sisäänkirjautuminen: http://opeskola.users.cs.helsinki.fi/tsoha/suunnitelmat/login
 
 
