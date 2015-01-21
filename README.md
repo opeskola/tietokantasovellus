@@ -13,7 +13,7 @@ aukeaa linkki, josta voi tallentaa pdf:n koneelle.
 
 Hyödyllisiä Bootstrap-linkkejä:
 
-tekstin asettelu ja tyylittely: http://getbootstrap.com/css/#type
+tekstin asettelu ja tyylittely: http://getbootstrap.com/css/#type "\n"
 taulukot: http://getbootstrap.com/css/#tables
 lomakkeet: http://getbootstrap.com/css/#forms
 painikkeet: http://getbootstrap.com/css/#buttons
