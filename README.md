@@ -25,7 +25,6 @@ painikkeet: http://getbootstrap.com/css/#buttons
 Tässä linkit staattisiin html-sivuihin:
 
 aloitussivu: http://opeskola.users.cs.helsinki.fi/tsoha/suunnitelmat/first_page
-
 aihelista: http://opeskola.users.cs.helsinki.fi/tsoha/suunnitelmat/themas
 
 uusien kysymysten lista: http://opeskola.users.cs.helsinki.fi/tsoha/suunnitelmat/new_questions_list
