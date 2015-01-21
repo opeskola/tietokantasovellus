@@ -13,11 +13,9 @@ aukeaa linkki, josta voi tallentaa pdf:n koneelle.
 
 Hyödyllisiä Bootstrap-linkkejä:
 
-http://getbootstrap.com/css/#type
-  
-http://getbootstrap.com/css/#tables
+tekstin asettelu ja tyylittely: http://getbootstrap.com/css/#type
+taulukot: http://getbootstrap.com/css/#tables
+lomakkeet: http://getbootstrap.com/css/#forms
+painikkeet: http://getbootstrap.com/css/#buttons
 
-http://getbootstrap.com/css/#forms
-
-http://getbootstrap.com/css/#buttons
 
