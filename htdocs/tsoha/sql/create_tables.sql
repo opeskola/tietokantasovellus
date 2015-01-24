@@ -1,6 +1,6 @@
 -- Lisää CREATE TABLE lauseet tähän tiedostoon
 CREATE TABLE Opiskelija(
-    opiskelijaNro SERIAL PRIMARY KEY,
+    opiskelijaNro INTEGER PRIMARY KEY,
     nimi varchar(100) NOT NULL,
     osoite varchar(255) NOT NULL,
     syntymaAika DATE NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE Opiskelija(
 );
 
 CREATE TABLE OpintoOhjaaja(
-    ID SERIAL PRIMARY KEY,
+    ID INTEGER PRIMARY KEY,
     nimi varchar(100) NOT NULL,
     osoite varchar(255) NOT NULL,
     syntymaAika DATE NOT NULL,
@@ -18,18 +18,23 @@ CREATE TABLE OpintoOhjaaja(
 );
 
 CREATE TABLE Aihepiiri(
-    ID SERIAL PRIMARY KEY,
+    ID INTEGER PRIMARY KEY,
     aihe varchar(100) NOT NULL
 );
 
 CREATE TABLE Kysymys(
     ID SERIAL PRIMARY KEY,
-    aiheID INTEGER REFERENCES Aihepiiri(ID),
-    kysyja INTEGER REFERENCES Opiskelija(opiskelijaNro),
+    opiskelijaNro INTEGER REFERENCES Opiskelija(opiskelijaNro),
+    sisalto varchar(2000),
+    pvm TIMESTAMP,
+    status boolean DEFAULT FALSE   
+);
+
+CREATE TABLE Vastaus(
+    ID SERIAL PRIMARY KEY,
     vastaaja INTEGER REFERENCES OpintoOhjaaja(ID),
-    kysymys varchar(2000),
-    kysymysPvm TIMESTAMP,
-    status boolean DEFAULT FALSE,
-    vastaus varchar(2000),
-    vastausPvm TIMESTAMP    
+    kysymys INTEGER REFERENCES Kysymys(ID),
+    aihe INTEGER REFERENCES Aihepiiri(ID),
+    sisalto varchar(2000),
+    pvm TIMESTAMP    
 );
