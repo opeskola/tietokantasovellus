@@ -42,8 +42,8 @@ class Aihepiiri extends BaseModel{
     return null;
   }
   
-  public static function create($id, $aihe){
-    return DB::query('INSERT INTO Aihepiiri(id, aihe) VALUES($id, $aihe) RETURNING id');  
+  public static function create($aihe){
+    return DB::query('INSERT INTO Aihepiiri(aihe) VALUES($aihe) RETURNING id');  
 //    
 //    $aihepiiri = new Aihepiiri(array(
 //      'id' => $row['id'],

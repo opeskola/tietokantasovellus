@@ -24,8 +24,7 @@ class AihepiiriController extends BaseController{
     $params = $_POST;
 
     // Luon uuden aihepiirin käyttäjän syöttämien tietojen perusteella kutsumalla Aihepiiri-mallini create metodia
-    $id = Aihepiiri::create(array(
-      'id' => $params['id'],  
+    $id = Aihepiiri::create(array( 
       'aihe' => $params['aihe']
     ));
 
