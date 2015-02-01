@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Usein kysytyt kysymykset</h1>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Kysymys</th>
+        <th>Kysytty</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for kysymys in kysymykset %}
+        <tr>
+          <td>{{kysymys.sisalto}}</td>
+          <td>{{kysymys.pvm}}</td>
+          <td>
+              {% if kysymys.status %}
+                <label class="label label-success">Vastattu</label>
+              {% else %}
+                <label class="label label-danger">Vastaamatta</label>
+              {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,5 +1,6 @@
 <?php
 
+
   class HelloWorldController extends BaseController{
 
     public static function index(){
@@ -8,7 +9,9 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä	
-      self::render_view('helloworld.html');
+        $aiheet = Aihepiiri::all();
+        // Tämä tulostaa muuttujan arvon mukavassa muodossa
+        print_r($aiheet);
     }
     
     public static function login(){

@@ -1,8 +1,61 @@
 <?php
 
-  $app->get('/', function() {
-    HelloWorldController::index();
+  
+  // Etusivu ( listaussivu)
+  $app->get('/', function(){
+    QuestionController::index();
+  });  
+  
+  
+  // tasta alkaa kysymyksiin liittyvat toiminnot
+  
+  $app->post('/kysymys', function(){
+    QuestionController::store();
   });
+  
+  // Kysymyksen lisäyslomakkeen näyttäminen
+  $app->get('/kysymys/new', function(){
+    QuestionController::create();	
+  });
+  
+  // Kysymysten listaussivu
+  $app->get('/kysymys', function(){
+    QuestionController::index();
+  });  
+  
+  // Kysymyksen esittelysivu
+  $app->get('/kysymys/:id', function($id){
+    QuestionController::show($id);
+  });
+  
+  
+  
+  // tasta alkaa aihepiireihin liittyvat toiminnot
+  
+  // Aiheiden listaussivu
+  $app->get('/aihepiiri', function(){
+    AihepiiriController::index();
+  });
+  
+  $app->post('/aihepiiri', function(){
+    AihepiiriController::store();
+  });    
+  
+  // Aihepiirin lisäyslomakkeen näyttäminen
+  $app->get('/aihepiiri/new', function(){
+    AihepiiriController::create();	
+  });
+  
+  // Kysymyksen esittelysivu
+  $app->get('/aihepiiri/:id', function($id){
+    AihepiiriController::show($id);
+  });
+  
+  
+  
+  
+  
+  
 
   $app->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();

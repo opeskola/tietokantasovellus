@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Aiheet</h1>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Aihe</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>{{aihepiiri.id}}</td>
+        <td>{{aihepiiri.aihe}}</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
+

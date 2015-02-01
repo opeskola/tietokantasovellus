@@ -10,7 +10,7 @@ CREATE TABLE Opiskelija(
 );
 
 CREATE TABLE OpintoOhjaaja(
-    ID INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     nimi varchar(100) NOT NULL,
     osoite varchar(255) NOT NULL,
     syntymaAika DATE NOT NULL,
@@ -18,12 +18,12 @@ CREATE TABLE OpintoOhjaaja(
 );
 
 CREATE TABLE Aihepiiri(
-    ID INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     aihe varchar(100) NOT NULL
 );
 
 CREATE TABLE Kysymys(
-    ID SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     opiskelijaNro INTEGER REFERENCES Opiskelija(opiskelijaNro),
     sisalto varchar(2000),
     pvm TIMESTAMP,
@@ -31,7 +31,7 @@ CREATE TABLE Kysymys(
 );
 
 CREATE TABLE Vastaus(
-    ID SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     vastaaja INTEGER REFERENCES OpintoOhjaaja(ID),
     kysymys INTEGER REFERENCES Kysymys(ID),
     aihe INTEGER REFERENCES Aihepiiri(ID),
