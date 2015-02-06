@@ -7,6 +7,7 @@
   });  
   
   
+  
   // tasta alkaa kysymyksiin liittyvat toiminnot
   
   $app->post('/kysymys', function(){
@@ -26,7 +27,22 @@
   // Kysymyksen esittelysivu
   $app->get('/kysymys/:id', function($id){
     QuestionController::show($id);
+  });  
+  
+  $app->get('/kysymys/:id/edit', function($id){
+    // Pelin muokkauslomakkeen esittäminen
+    QuestionController::edit($id);
   });
+  
+  $app->post('/kysymys/:id/edit', function($id){
+    // Pelin muokkaaminen
+    QuestionController::update($id);
+  });  
+
+  $app->post('/kysymys/:id/destroy', function($id){
+    // Kysymyksen poisto
+    QuestionController::destroy($id);
+  });  
   
   
   
@@ -53,9 +69,22 @@
   
   
   
+  // Tasta alkaa login-funktiot (sisaankirjautuminen)
+  
+  $app->get('/login', function(){
+    // Kirjautumislomakkeen esittäminen
+    UserController::login();
+  });
+
+  $app->post('/login', function(){
+    // Kirjautumisen käsittely
+    UserController::handle_login();
+  });
   
   
   
+  
+  // Testikamaa
 
   $app->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();

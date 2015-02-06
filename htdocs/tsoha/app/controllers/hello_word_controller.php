@@ -9,9 +9,9 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä	
-        $aiheet = Aihepiiri::all();
-        // Tämä tulostaa muuttujan arvon mukavassa muodossa
-        print_r($aiheet);
+        DB::query('INSERT INTO kysymys (opiskelijaNro, sisalto) VALUES(:opiskelijaNro, :sisalto)', array('opiskelijaNro' => 20, 'sisalto' => 'ok'));
+    echo 'Lisätty';
+        
     }
     
     public static function login(){

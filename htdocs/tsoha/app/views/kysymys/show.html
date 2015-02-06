@@ -8,6 +8,7 @@
       <tr>
         <th>Kysymys</th>
         <th>Vastaus</th>
+        <th></th>
       </tr>
     </thead>
 
@@ -15,6 +16,7 @@
       <tr>
         <td>{{kysymys.sisalto}}</td>
         <td>{{vastaus.sisalto}}</td>
+        <td><a class="btn btn-default btn-sm" href="{{base_path}}/kysymys/{{kysymys.id}}/edit">Muokkaa</a></td>
       </tr>
     </tbody>
   </table>
