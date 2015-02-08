@@ -81,6 +81,10 @@
     UserController::handle_login();
   });
   
+  $app->post('/logout', function(){
+    UserController::logout();
+  });
+  
   
   
   

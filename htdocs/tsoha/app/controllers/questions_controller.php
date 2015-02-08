@@ -2,6 +2,8 @@
 
 class QuestionController extends BaseController{
   public static function index(){
+    self::check_logged_in();
+    
     // Haetaan kaikki pelit tietokannasta
     $kysymykset = Kysymys::all();
     // Renderöidään views/kysymys kansiossa sijaitseva tiedosto index.html muuttujan $kysymykset datalla
@@ -9,6 +11,8 @@ class QuestionController extends BaseController{
   }
   
   public static function show($id){
+    self::check_logged_in();
+    
     // Haetaan kaikki pelit tietokannasta
     $kysymys = Kysymys::find($id);
     // Renderöidään views/kysymys kansiossa sijaitseva tiedosto index.html muuttujan $kysymykset datalla
@@ -16,16 +20,18 @@ class QuestionController extends BaseController{
   }  
   
   public static function create(){
-      self::render_view('kysymys/new.html');
+    self::check_logged_in();
+    self::render_view('kysymys/new.html');
   }
   
   
   public static function store(){
+    self::check_logged_in();
     // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
     $params = $_POST;
 
     $attributes = array(
-      'opiskelijaNro' => $params['opiskelijaNro'],
+      // 'opiskelijaNro' => $params['opiskelijaNro'],
       'sisalto' => $params['sisalto']
     );
     
@@ -44,6 +50,7 @@ class QuestionController extends BaseController{
   
   // Kysymyksen muokkaaminen (lomakkeen esittäminen)
   public static function edit($id){
+    self::check_logged_in();  
     $kysymys = Kysymys::find($id);
 
     self::render_view('kysymys/edit.html', array('kysymys' => $kysymys));
@@ -51,6 +58,7 @@ class QuestionController extends BaseController{
     
   // Pelin muokkaaminen (lomakkeen käsittely)
   public static function update($id){
+    self::check_logged_in();  
     $params = $_POST;
 
     $attributes = array(
@@ -71,6 +79,7 @@ class QuestionController extends BaseController{
   
   // Kysymyksen poistaminen
   public static function destroy($id){
+    self::check_logged_in();
     // Kutsutaan Kysymys-malliluokan metodia destroy, joka poistaa kysymyksen annetulla id:llä
     Kysymys::destroy($id);
 
