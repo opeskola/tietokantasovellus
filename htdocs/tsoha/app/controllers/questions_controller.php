@@ -4,7 +4,7 @@ class QuestionController extends BaseController{
   public static function index(){
     self::check_logged_in();
     
-    // Haetaan kaikki pelit tietokannasta
+    // Haetaan kaikki kysymykset tietokannasta
     $kysymykset = Kysymys::all();
     // Renderöidään views/kysymys kansiossa sijaitseva tiedosto index.html muuttujan $kysymykset datalla
     self::render_view('kysymys/index.html', array('kysymykset' => $kysymykset));
@@ -17,7 +17,17 @@ class QuestionController extends BaseController{
     $kysymys = Kysymys::find($id);
     // Renderöidään views/kysymys kansiossa sijaitseva tiedosto index.html muuttujan $kysymykset datalla
     self::render_view('kysymys/show.html', array('kysymys' => $kysymys));
-  }  
+  } 
+  
+  public static function metadata($id){
+      self::check_logged_in();
+      
+      $kysymys = Kysymys::find($id);
+      
+      // siirrytaan sivulle, jossa on kysymyksen ja vastauksen tietoja
+      self::render_view('kysymys/metadata.html', array('kysymys' => $kysymys));
+  }
+  
   
   public static function create(){
     self::check_logged_in();
@@ -33,6 +43,7 @@ class QuestionController extends BaseController{
     $attributes = array(
       // 'opiskelijaNro' => $params['opiskelijaNro'],
       'sisalto' => $params['sisalto']
+      //'pvm' => $params['pvm']
     );
     
     $kysymys = new Kysymys($attributes);
@@ -56,7 +67,7 @@ class QuestionController extends BaseController{
     self::render_view('kysymys/edit.html', array('kysymys' => $kysymys));
   }
     
-  // Pelin muokkaaminen (lomakkeen käsittely)
+  // Kysymyksen muokkaaminen (lomakkeen käsittely)
   public static function update($id){
     self::check_logged_in();  
     $params = $_POST;
@@ -85,6 +96,14 @@ class QuestionController extends BaseController{
 
     // Ohjataan käyttäjä kysymystenn listaussivulle ilmoituksen kera
     self::redirect_to('/kysymys', array('message' => 'Kysymys on poistettu onnistuneesti!'));
+  }
+  
+  // Vastauslomakkeen näyttäminen
+  public static function answer($id){
+    //self::check_logged_in();  
+    $kysymys = Kysymys::find($id);
+
+    self::render_view('kysymys/answer.html', array('kysymys' => $kysymys));
   }  
 }
 

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Kysymys</h1>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Kysymys</th>
+        <th>Kysyjä</th>
+        <th>Kysytty</th>
+        <th>Vastaus</th>
+        <th>Vastaaja</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><a href="{{base_path}}/kysymys/{{kysymys.id}}">{{kysymys.sisalto}}</td>
+        <td>{{user.nimi}}</td>
+        <td><a href="{{base_path}}/kysymys/{{kysymys.id}}">{{kysymys.pvm}}</td>
+        <td><a href="{{base_path}}/vastaus/{{vastaus.id}}">{{vastaus.sisalto}}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

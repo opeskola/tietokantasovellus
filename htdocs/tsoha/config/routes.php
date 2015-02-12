@@ -34,6 +34,11 @@
     QuestionController::edit($id);
   });
   
+  $app->get('/kysymys/:id/metadata', function($id){
+    // Pelin muokkauslomakkeen esittäminen
+    QuestionController::metadata($id);
+  });
+  
   $app->post('/kysymys/:id/edit', function($id){
     // Pelin muokkaaminen
     QuestionController::update($id);
@@ -42,8 +47,49 @@
   $app->post('/kysymys/:id/destroy', function($id){
     // Kysymyksen poisto
     QuestionController::destroy($id);
-  });  
+  }); 
   
+  $app->get('/kysymys/:id/vastaa', function($id){
+    // Kysymyksen poisto
+    QuestionController::answer($id);
+  });   
+  
+  $app->post('/kysymys/:id/vastaa', function($id){
+    // Kysymyksen poisto
+    AnswerController::store($id);
+  });
+ 
+  
+//  // tasta alkaa vastauksiin liittyvat toiminnot
+//  
+//  $app->post('/vastaus', function(){
+//    AnswerController::store();
+//  });
+//  
+//  // Vastauksen lisäyslomakkeen näyttäminen
+//  $app->get('/vastaus/new', function(){
+//    AnswerController::create();	
+//  });
+//  
+//  // Kysymysten ja vastausten listaussivu
+//  $app->get('/vastaus', function(){
+//    AnswerController::index();
+//  });
+//  
+//  // Vastauksen esittelysivu
+//  $app->get('/vastaus/:id', function($id){
+//    AnswerController::show($id);
+//  }); 
+//  
+//  $app->get('/vastaus/:id/edit', function($id){
+//    // Pelin muokkauslomakkeen esittäminen
+//    AnswerController::edit($id);
+//  });
+//  
+//  $app->post('/vastaus/:id/edit', function($id){
+//    // Pelin muokkaaminen
+//    AnswerController::update($id);
+//  }); 
   
   
   // tasta alkaa aihepiireihin liittyvat toiminnot
@@ -69,7 +115,7 @@
   
   
   
-  // Tasta alkaa login-funktiot (sisaankirjautuminen)
+  // Tasta alkaa login-funktiot (opiskelijoille)
   
   $app->get('/login', function(){
     // Kirjautumislomakkeen esittäminen
@@ -85,7 +131,24 @@
     UserController::logout();
   });
   
+
   
+  
+   // Tasta alkaa login_ohjaaja-funktiot (ohjaajille)
+  
+  $app->get('/login_ohjaaja', function(){
+    // Kirjautumislomakkeen esittäminen
+    OhjaajaController::login();
+  });
+
+  $app->post('/login_ohjaaja', function(){
+    // Kirjautumisen käsittely
+    OhjaajaController::handle_login();
+  });
+  
+  $app->post('/logout_ohjaaja', function(){
+    OhjaajaController::logout();
+  });
   
   
   // Testikamaa

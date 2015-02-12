@@ -20,6 +20,25 @@
         self::redirect_to('/login', array('message' => 'Kirjaudu ensin sisään!'));
       }  
     }
+    
+    // Etsitään tässä sisäänkirjautunut opinto-ohjaaja
+    public static function get_ohjaaja_logged_in(){
+      if(isset($_SESSION['ohjaaja'])){
+        $ohjaaja_id = $_SESSION['ohjaaja'];
+        // Pyydetään Ohjaaja-mallilta käyttäjä session mukaisella id:llä
+        $ohjaaja = Ohjaaja::find($ohjaaja_id);
+
+        return $ohjaaja;
+      }
+      return null;       
+    } 
+    
+    public static function check_ohjaaja_logged_in(){
+      // Toteuta kirjautumisen tarkistus tähän
+      if(!isset($_SESSION['ohjaaja'])){
+        self::redirect_to('/login_ohjaaja', array('message' => 'Kirjaudu ensin sisään!'));
+      }  
+    }
 
     public static function render_view($view, $content = array()){
       Twig_Autoloader::register();

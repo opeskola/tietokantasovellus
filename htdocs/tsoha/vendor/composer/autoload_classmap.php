@@ -6,10 +6,21 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Aihepiiri' => $baseDir . '/app/models/aihepiiri.php',
+    'AihepiiriController' => $baseDir . '/app/controllers/aihepiiri_controller.php',
+    'AnswerController' => $baseDir . '/app/controllers/answer_controller.php',
     'BaseController' => $baseDir . '/lib/base_controller.php',
     'BaseModel' => $baseDir . '/lib/base_model.php',
     'DB' => $baseDir . '/lib/database.php',
+    'HelloWorld' => $baseDir . '/app/models/hello_world.php',
     'HelloWorldController' => $baseDir . '/app/controllers/hello_word_controller.php',
+    'Kysymys' => $baseDir . '/app/models/kysymys.php',
+    'Ohjaaja' => $baseDir . '/app/models/ohjaaja.php',
+    'OhjaajaController' => $baseDir . '/app/controllers/ohjaaja_controller.php',
+    'QuestionController' => $baseDir . '/app/controllers/questions_controller.php',
     'Slim\\Slim' => $vendorDir . '/Slim/Slim.php',
     'Twig_Autoloader' => $vendorDir . '/Twig/lib/Twig/Autoloader.php',
+    'User' => $baseDir . '/app/models/user.php',
+    'UserController' => $baseDir . '/app/controllers/user_controller.php',
+    'Vastaus' => $baseDir . '/app/models/vastaus.php',
 );

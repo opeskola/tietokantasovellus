@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Muokkaa kysymystä</h1>
+  <h1>Kirjoita uusi vastaus</h1>
 
   {% if errors %}
     <div class="alert alert-danger">
@@ -13,13 +13,22 @@
     </div>
   {% endif %}
 
+<!--  <div class="alert alert-danger">
+  </div>-->
   
-  <form method="post" action="{{base_path}}/kysymys/{{kysymys.id}}/edit">
+  <form method="post" action="{{base_path}}/kysymys/{{kysymys.id}}/vastaa">
     <div class="form-group">
       <label>Kysymys</label>
       <textarea name="sisalto" class="form-control">{{kysymys.sisalto}}</textarea>
-    </div> 
-      
+    </div>
+    <div class="form-group">
+      <label>Kysymyksen numero</label>
+      <textarea name="id" class="form-control">{{kysymys.id}}</textarea>
+    </div>      
+    <div>
+      <label>Vastaus</label>
+      <input name="vastaus" class="form-control" type="text">
+    </div>        -->
       
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Lähetä</button>

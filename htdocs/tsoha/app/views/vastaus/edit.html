@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Muokkaa kysymystä</h1>
+  <h1>Muokkaa vastausta</h1>
 
   {% if errors %}
     <div class="alert alert-danger">
@@ -14,10 +14,10 @@
   {% endif %}
 
   
-  <form method="post" action="{{base_path}}/kysymys/{{kysymys.id}}/edit">
+  <form method="post" action="{{base_path}}/vastaus/{{vastaus.id}}/edit">
     <div class="form-group">
-      <label>Kysymys</label>
-      <textarea name="sisalto" class="form-control">{{kysymys.sisalto}}</textarea>
+      <label>Vastaus</label>
+      <textarea name="sisalto" class="form-control">{{vastaus.sisalto}}</textarea>
     </div> 
       
       
@@ -26,4 +26,5 @@
     </div>
   </form>
 {% endblock %}
+
 
