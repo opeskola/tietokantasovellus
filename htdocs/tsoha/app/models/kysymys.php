@@ -27,7 +27,9 @@ class Kysymys extends BaseModel{
   public static function all(){
     $kysymykset = array();
     // Kutsutaan luokan DB staattista metodia query
-    $rows = DB::query('SELECT * FROM Kysymys');
+    $rows = DB::query('SELECT Kysymys.id, Kysymys.sisalto, Kysymys.pvm, Kysymys.status, 
+        Vastaus.sisalto AS vastaus_sisalto FROM Kysymys LEFT JOIN Vastaus ON Kysymys.id = Vastaus.kysymys;
+');
 
     // Käydään kyselyn tuottamat rivit läpi
     foreach($rows as $row){
@@ -62,12 +64,17 @@ class Kysymys extends BaseModel{
     return null;
   }
   
+  public static function set_status_true($id){
+    DB::query('UPDATE Kysymys SET status = TRUE WHERE id = :id', array('id' => $id));
+  }
+  
+  
   public static function update($id, $kysymys){
     DB::query('UPDATE Kysymys SET sisalto = :sisalto WHERE id = :id', array('id' => $id, 'sisalto' => $kysymys['sisalto']));
   }
   
   public static function create($kysymys){ 
-    $rows = DB::query('INSERT INTO Kysymys (sisalto) VALUES(:sisalto) RETURNING id', array('sisalto' => $kysymys['sisalto'])); 
+    $rows = DB::query('INSERT INTO Kysymys (sisalto, pvm) VALUES(:sisalto, NOW()) RETURNING id', array('sisalto' => $kysymys['sisalto'])); 
     $id = $rows[0]['id'];
     return $id;   
   } 

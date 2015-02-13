@@ -57,12 +57,35 @@ class Vastaus extends BaseModel{
     return null;
   }
   
+  // haetaan vastaus kysymyksen id:n perusteella
+  public static function find_answer_with_question_id($kysymys){
+    $rows = DB::query('SELECT * FROM Vastaus WHERE kysymys = :kysymys LIMIT 1', array('kysymys' => $kysymys));  
+    
+    if(count($rows) > 0){
+      $row = $rows[0];
+
+      $vastaus = new Vastaus(array(
+        'id' => $row['id'],
+        'kysymys' => $row['kysymys'],
+        'sisalto' => $row['sisalto'],
+        'pvm' => $row['pvm'],
+      ));
+
+      return $vastaus;
+    }
+
+    return null;      
+      
+  }
+  
+  
+  
   public static function update($id, $vastaus){
     DB::query('UPDATE Vastaus SET sisalto = :sisalto WHERE id = :id', array('id' => $id, 'sisalto' => $vastaus['sisalto']));
   }
   
   public static function create($vastaus){ 
-    $rows = DB::query('INSERT INTO Vastaus (sisalto) VALUES(:sisalto) RETURNING id', array('sisalto' => $vastaus['sisalto'])); 
+    $rows = DB::query('INSERT INTO Vastaus (sisalto, kysymys, pvm) VALUES(:sisalto, :kysymys, NOW()) RETURNING id', array('sisalto' => $vastaus['sisalto'], 'kysymys' => $vastaus['kysymys'])); 
     $id = $rows[0]['id'];
     return $id;   
   }

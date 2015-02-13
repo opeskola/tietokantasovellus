@@ -11,7 +11,7 @@
     <thead>
       <tr>
         <th>Kysymys</th>
-        <th>Päivämäärä</th>
+        <th>Kysytty</th>
         <th>Vastaus</th>
       </tr>
     </thead>
@@ -20,10 +20,10 @@
       {% for kysymys in kysymykset %}
         <tr>
           <td><a href="{{base_path}}/kysymys/{{kysymys.id}}">{{kysymys.sisalto}}</a></td>
-          <td><a href="{{base_path}}/kysymys/{{kysymys.id}}">{{kysymys.pvm}}</a></td>
+          <td>{{kysymys.pvm}}</td>
           <td>
               {% if kysymys.status %}
-                <label class="label label-success"><a href="{{base_path}}/vastaus/{{vastaus.id}}">{{vastaus.sisalto}}</a></label>
+                <p>{{vastaus.sisalto}}</p>
               {% else %}
                 <label class="label label-danger">Vastaamatta</label>
               {% endif %}

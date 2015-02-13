@@ -35,6 +35,7 @@ class AnswerController extends BaseController{
 
     $kysymys_id = $params['id'];
     
+    Kysymys::set_status_true($kysymys_id);
     
     $attributes = array( 
       'sisalto' => $params['vastaus'],

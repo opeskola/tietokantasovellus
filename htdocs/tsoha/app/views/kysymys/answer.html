@@ -19,16 +19,15 @@
   <form method="post" action="{{base_path}}/kysymys/{{kysymys.id}}/vastaa">
     <div class="form-group">
       <label>Kysymys</label>
-      <textarea name="sisalto" class="form-control">{{kysymys.sisalto}}</textarea>
+      <p>{{kysymys.sisalto}}</p>
     </div>
     <div class="form-group">
-      <label>Kysymyksen numero</label>
-      <textarea name="id" class="form-control">{{kysymys.id}}</textarea>
+      <input type="hidden" name="id" value="{{kysymys.id}}"/>
     </div>      
     <div>
       <label>Vastaus</label>
-      <input name="vastaus" class="form-control" type="text">
-    </div>        -->
+      <input name="vastaus" class="form-control" type="text"/>
+    </div>       
       
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Lähetä</button>

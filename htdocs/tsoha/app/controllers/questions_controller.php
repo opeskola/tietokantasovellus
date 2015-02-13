@@ -13,12 +13,16 @@ class QuestionController extends BaseController{
   public static function show($id){
     self::check_logged_in();
     
-    // Haetaan kaikki pelit tietokannasta
+    // Haetaan kysymys tietokannasta id:n perusteella
     $kysymys = Kysymys::find($id);
+    
+    // Haetaan vastaus kysymyksen id:n perusteella
+    $vastaus = Vastaus::find_answer_with_question_id($id);
     // Renderöidään views/kysymys kansiossa sijaitseva tiedosto index.html muuttujan $kysymykset datalla
-    self::render_view('kysymys/show.html', array('kysymys' => $kysymys));
+    self::render_view('kysymys/show.html', array('kysymys' => $kysymys, 'vastaus' => $vastaus));
   } 
   
+  // kysymyksen yksityiskohtaisemmat tiedot
   public static function metadata($id){
       self::check_logged_in();
       

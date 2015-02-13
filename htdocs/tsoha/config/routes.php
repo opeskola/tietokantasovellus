@@ -94,6 +94,10 @@
   
   // tasta alkaa aihepiireihin liittyvat toiminnot
   
+  // naita ei tarvita todennakoisesti, koska aiheita ei ole sittenkaan
+  // tarkoitus lisata kayttoliittymasta, vaan riittaa, etta ne lisataan
+  // suoraan kantaan yllapitajan toimesta  
+  
   // Aiheiden listaussivu
   $app->get('/aihepiiri', function(){
     AihepiiriController::index();
@@ -134,7 +138,9 @@
 
   
   
-   // Tasta alkaa login_ohjaaja-funktiot (ohjaajille)
+  // Tasta alkaa login_ohjaaja-funktiot (ohjaajille)
+  
+  // opinto-ohjaajan sisaankirjautuminen ei toimi, joten tama pitaa fiksata
   
   $app->get('/login_ohjaaja', function(){
     // Kirjautumislomakkeen esittäminen
