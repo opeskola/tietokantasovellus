@@ -30,17 +30,17 @@
   });  
   
   $app->get('/kysymys/:id/edit', function($id){
-    // Pelin muokkauslomakkeen esittäminen
+    // Kysymyksen muokkauslomakkeen esittäminen
     QuestionController::edit($id);
   });
   
   $app->get('/kysymys/:id/metadata', function($id){
-    // Pelin muokkauslomakkeen esittäminen
+    // Kysymyksen tarkemmat tiedot
     QuestionController::metadata($id);
   });
   
   $app->post('/kysymys/:id/edit', function($id){
-    // Pelin muokkaaminen
+    // Kysymyksen muokkaaminen
     QuestionController::update($id);
   });  
 
@@ -50,17 +50,23 @@
   }); 
   
   $app->get('/kysymys/:id/vastaa', function($id){
-    // Kysymyksen poisto
+    // 
     QuestionController::answer($id);
   });   
   
   $app->post('/kysymys/:id/vastaa', function($id){
-    // Kysymyksen poisto
+    // 
     AnswerController::store($id);
   });
+  
+  $app->get('/kysymys/:id/edit_answer', function($id){
+    // Kysymykseen vastaaminen
+    QuestionController::answer($id);
+  }); 
  
   
-//  // tasta alkaa vastauksiin liittyvat toiminnot
+//  tasta alkaa vastauksiin liittyvat toiminnot
+//  Naita ei tarvita todennakoisesti
 //  
 //  $app->post('/vastaus', function(){
 //    AnswerController::store();

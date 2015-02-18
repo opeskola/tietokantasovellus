@@ -11,8 +11,7 @@
     <thead>
       <tr>
         <th>Kysymys</th>
-        <th>Kysytty</th>
-        <th>Vastaus</th>
+        <th>Status</th>
       </tr>
     </thead>
 
@@ -20,10 +19,9 @@
       {% for kysymys in kysymykset %}
         <tr>
           <td><a href="{{base_path}}/kysymys/{{kysymys.id}}">{{kysymys.sisalto}}</a></td>
-          <td>{{kysymys.pvm}}</td>
           <td>
               {% if kysymys.status %}
-                <p>{{vastaus.sisalto}}</p>
+                <label class="label label-success">Vastattu</label>
               {% else %}
                 <label class="label label-danger">Vastaamatta</label>
               {% endif %}

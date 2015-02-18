@@ -10,11 +10,12 @@ class User extends BaseModel{
   
   public function authenticate($opiskelijaNro, $salasana){
       $opiskelijat = DB::query('SELECT * FROM Opiskelija WHERE opiskelijaNro = :opiskelijaNro AND salasana = :salasana', array('opiskelijaNro' => $opiskelijaNro, 'salasana' => $salasana));
-      //$opintoOhjaaja = DB::query('SELECT * FROM OpintoOhjaaja WHERE id = :username AND salasana = :password', array('username' => $username, 'password' => $password));
-      // tee opinto-ohjaajalle oma malli kirjautumiseen
+
+      // jos opiskelijaa ei loydy haetuilla tunnuksilla ja salasanalla, palautetaan FALSE
       
       if (count($opiskelijat) == 0){
           return FALSE;
+          
       }
       
       if (count($opiskelijat) > 0){
@@ -28,13 +29,11 @@ class User extends BaseModel{
               'tiedekunta' => $opiskelija['tiedekunta'],
               'aloitusvuosi' => $opiskelija['aloitusvuosi'],
               'salasana' => $opiskelija['salasana']));
-      //} elseif (count($opintoOhjaaja) == 1){
-      //    $user = $opintoOhjaaja;
-      //}
       
       return $user;
       }
   }
+ 
   
   public function find($opiskelijaNro){
     $rows = DB::query('SELECT * FROM Opiskelija WHERE opiskelijaNro = :opiskelijaNro LIMIT 1', array('opiskelijaNro' => $opiskelijaNro));
