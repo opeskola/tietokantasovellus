@@ -108,6 +108,6 @@ class QuestionController extends BaseController{
     $kysymys = Kysymys::find($id);
 
     self::render_view('kysymys/answer.html', array('kysymys' => $kysymys));
-  }  
+  }
 }
 

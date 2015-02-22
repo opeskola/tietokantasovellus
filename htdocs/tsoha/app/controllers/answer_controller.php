@@ -39,7 +39,8 @@ class AnswerController extends BaseController{
     
     $attributes = array( 
       'sisalto' => $params['vastaus'],
-      'kysymys' => $params['id']
+      'kysymys' => $params['id'],
+      'aihe' => $params['aihe']
     );
     
     $vastaus = new Vastaus($attributes);
@@ -58,8 +59,9 @@ class AnswerController extends BaseController{
   
   // Vastauksen muokkaaminen (lomakkeen esittäminen)
   public static function edit($id){
-    //self::check_logged_in();  
-    $vastaus = Vastaus::find($id);
+    //self::check_logged_in(); 
+    
+    $vastaus = Vastaus::find_answer_with_question_id($id);
 
     self::render_view('vastaus/edit.html', array('vastaus' => $vastaus));
   }
@@ -68,9 +70,12 @@ class AnswerController extends BaseController{
   public static function update($id){
     //self::check_logged_in();  
     $params = $_POST;
+    
+    $kysymys_id = $params['id'];
 
     $attributes = array(
-      'sisalto' => $params['sisalto'],
+      'sisalto' => $params['vastaus'],
+      'kysymys' => $params['id']  
     );
 
     $vastaus = new Vastaus($attributes);
@@ -79,10 +84,9 @@ class AnswerController extends BaseController{
     //if(count($errors) > 0){
     //  self::render_view('vastaus/edit.html', array('errors' => $errors, 'attributes' => $attributes));
     //}else{
-      Kysymys::update($id, $attributes);
+      Vastaus::update($id, $attributes);
 
-      self::redirect_to('/vastaus/' . $id, array('message' => 'Vastausta on muokattu onnistuneesti!'));
-    //}
+      self::redirect_to('/kysymys' , array('message' => 'Vastausta on muokattu onnistuneesti!'));
   }
   
 }

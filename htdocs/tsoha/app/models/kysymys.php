@@ -10,6 +10,7 @@ class Kysymys extends BaseModel{
     $this->validators = array('validate_sisalto');
   }
   
+  // validoidaan kysymyksen sisalto
   public function validate_sisalto(){
     $errors = array();
 
@@ -23,13 +24,12 @@ class Kysymys extends BaseModel{
     return $errors;
  }  
   
-  
+  // haetaan kaikki kysymykset tietokannasta
   public static function all(){
     $kysymykset = array();
     // Kutsutaan luokan DB staattista metodia query
     $rows = DB::query('SELECT Kysymys.id, Kysymys.sisalto, Kysymys.pvm, Kysymys.status, 
-        Vastaus.sisalto AS vastaus_sisalto FROM Kysymys LEFT JOIN Vastaus ON Kysymys.id = Vastaus.kysymys;
-');
+        Vastaus.sisalto AS vastaus_sisalto FROM Kysymys LEFT JOIN Vastaus ON Kysymys.id = Vastaus.kysymys;');
 
     // Käydään kyselyn tuottamat rivit läpi
     foreach($rows as $row){
@@ -45,6 +45,7 @@ class Kysymys extends BaseModel{
     return $kysymykset;
   }
   
+  // haetaan tietokannasta kysymys id:n perusteella
   public static function find($id){
     $rows = DB::query('SELECT * FROM Kysymys WHERE id = :id LIMIT 1', array('id' => $id));
 
@@ -64,24 +65,27 @@ class Kysymys extends BaseModel{
     return null;
   }
   
+  
+  // asetetaan status arvoon true, jos kysymykseen on vastattu (default-arvo on,
+  // etta status = false
   public static function set_status_true($id){
     DB::query('UPDATE Kysymys SET status = TRUE WHERE id = :id', array('id' => $id));
   }
   
-  
+  // paivitetaan kysymyksen sisalto
   public static function update($id, $kysymys){
     DB::query('UPDATE Kysymys SET sisalto = :sisalto WHERE id = :id', array('id' => $id, 'sisalto' => $kysymys['sisalto']));
   }
   
+  
+  // luodaan uusi kysymys
   public static function create($kysymys){ 
     $rows = DB::query('INSERT INTO Kysymys (sisalto, pvm) VALUES(:sisalto, NOW()) RETURNING id', array('sisalto' => $kysymys['sisalto'])); 
     $id = $rows[0]['id'];
     return $id;   
   } 
   
-  
-  
-  
+  // tuhotaan kannassa oleva kysymys 
   public static function destroy($id){ 
     DB::query('DELETE FROM Kysymys WHERE id = :id', array('id' => $id));
   }   

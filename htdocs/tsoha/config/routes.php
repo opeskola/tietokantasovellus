@@ -59,10 +59,16 @@
     AnswerController::store($id);
   });
   
+  
   $app->get('/kysymys/:id/edit_answer', function($id){
     // Kysymykseen vastaaminen
-    QuestionController::answer($id);
-  }); 
+    AnswerController::edit($id);
+  });
+  
+  $app->post('/vastaus/:id/edit', function($id){
+    // Kysymyksen muokkaaminen
+    AnswerController::update($id);
+  });   
  
   
 //  tasta alkaa vastauksiin liittyvat toiminnot

@@ -15,9 +15,13 @@
 
   
   <form method="post" action="{{base_path}}/vastaus/{{vastaus.id}}/edit">
+      
     <div class="form-group">
-      <label>Vastaus</label>
-      <textarea name="sisalto" class="form-control">{{vastaus.sisalto}}</textarea>
+      <input type="hidden" name="id" value="{{vastaus.id}}"/>
+    </div>       
+      
+    <div class="form-group">
+      <textarea name="vastaus" class="form-control">{{vastaus.sisalto}}</textarea>
     </div> 
       
       

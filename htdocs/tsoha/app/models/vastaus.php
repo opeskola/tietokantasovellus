@@ -48,7 +48,7 @@ class Vastaus extends BaseModel{
       $vastaus = new Vastaus(array(
         'id' => $row['id'],
         'sisalto' => $row['sisalto'],
-        'pvm' => $row['pvm'],
+        'pvm' => $row['pvm']
       ));
 
       return $vastaus;
@@ -68,7 +68,7 @@ class Vastaus extends BaseModel{
         'id' => $row['id'],
         'kysymys' => $row['kysymys'],
         'sisalto' => $row['sisalto'],
-        'pvm' => $row['pvm'],
+        'pvm' => $row['pvm']
       ));
 
       return $vastaus;
@@ -85,7 +85,7 @@ class Vastaus extends BaseModel{
   }
   
   public static function create($vastaus){ 
-    $rows = DB::query('INSERT INTO Vastaus (sisalto, kysymys, pvm) VALUES(:sisalto, :kysymys, NOW()) RETURNING id', array('sisalto' => $vastaus['sisalto'], 'kysymys' => $vastaus['kysymys'])); 
+        $rows = DB::query('INSERT INTO Vastaus (sisalto, kysymys, aihe, pvm) VALUES(:sisalto, :kysymys, :aihe, NOW()) RETURNING id', array('sisalto' => $vastaus['sisalto'], 'kysymys' => $vastaus['kysymys'], 'aihe' => $vastaus['aihe'])); 
     $id = $rows[0]['id'];
     return $id;   
   }

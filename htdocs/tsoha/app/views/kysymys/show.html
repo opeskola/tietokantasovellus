@@ -3,43 +3,37 @@
 {% block content %}
   <h1>{{kysymys.sisalto}}</h1>
 
-<!--  <table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>-->
+  <p>{{vastaus.sisalto}}</p>
+  <a class="btn btn-primary btn-sm" href="{{base_path}}/kysymys/{{kysymys.id}}/edit">Muokkaa kysymystä</a>
+  {% if kysymys.status %}
+    <a class="btn btn-primary btn-sm" href="{{base_path}}/kysymys/{{kysymys.id}}/edit_answer">Muokkaa vastausta</a>
+  {% endif %}
+        
+  <p></p>
+  {% if kysymys.status == false %}
+    <form method="post" action="{{base_path}}/kysymys/{{kysymys.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa kysymyksen?">
+      <button type="submit" class="btn btn-danger">Poista kysymys</button>
+    </form>
+  {% endif %}
 
-<!--    <tbody>
-      <tr>-->
-<p>{{vastaus.sisalto}}</p>
-        <a class="btn btn-default btn-sm" href="{{base_path}}/kysymys/{{kysymys.id}}/edit">Muokkaa kysymystä</a>
-        {% if kysymys.status %}
-          <a class="btn btn-default btn-sm" href="{{base_path}}/kysymys/{{kysymys.id}}/edit_answer">Muokkaa vastausta</a>
-        {% endif %}
+  <p></p>      
+  <!-- Jos kysymykseen on jo vastattu, ei nayteta Vastaa-lomaketta -->
         
-          {% if kysymys.status == false %}
-          <form method="post" action="{{base_path}}/kysymys/{{kysymys.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa kysymyksen?">
-            <button type="submit" class="btn btn-danger">Poista kysymys</button>
-          </form>  
-          {% endif %}
-
-        
-        <!-- Jos kysymykseen on jo vastattu, ei nayteta Vastaa-lomaketta -->
-        
-          {% if kysymys.status == false %}
-          <p> 
-            <a href="{{base_path}}/kysymys/{{kysymys.id}}/vastaa" class="btn btn-success">Vastaa</a>
-          </p> 
-          {% endif %}
-        
-        
-        
-<!--      </tr>
-    </tbody>
-  </table>-->
+  {% if kysymys.status == false %}
+    <p> 
+        <a href="{{base_path}}/kysymys/{{kysymys.id}}/vastaa" class="btn btn-success">Vastaa</a>
+    </p> 
+  {% endif %}
+  
+  <ul>
+    <li><strong>Kysytty:</strong>{{kysymys.pvm}}</li>
+    
+    <!-- Jos kysymykseen on jo vastattu, naytetaan vastauspaiva -->
+    
+    {% if kysymys.status %}
+      <li><strong>Vastattu:</strong>{{vastaus.pvm}}</li>
+    {% endif %}
+  </ul>  
+  
 {% endblock %}
 
