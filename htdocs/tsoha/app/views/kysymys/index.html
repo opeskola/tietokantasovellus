@@ -5,7 +5,21 @@
 
   <p>
     <a href="{{base_path}}/kysymys/new" class="btn btn-success">Lisää kysymys</a>
+
   </p>
+  <h4>Hae aiheen perusteella</h4>
+  <form method="post" action="{{base_path}}/aihepiiri">
+    <select name="aihe" class="form-control">
+      <option value="1">Luokittelematon</option>
+      <option value="2">Vaihto-opiskelu</option>
+      <option value="3">JOO-opinnot</option>
+      <option value="4">Opintotuki</option>
+      <option value="5">Tentit</option>
+    </select>
+  </form>
+  
+  <p></p>
+  <p></p>
   
   <table class="table table-striped table-bordered">
     <thead>

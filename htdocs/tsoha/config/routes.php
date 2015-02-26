@@ -68,7 +68,7 @@
   $app->post('/vastaus/:id/edit', function($id){
     // Kysymyksen muokkaaminen
     AnswerController::update($id);
-  });   
+  });
  
   
 //  tasta alkaa vastauksiin liittyvat toiminnot
@@ -110,23 +110,23 @@
   // tarkoitus lisata kayttoliittymasta, vaan riittaa, etta ne lisataan
   // suoraan kantaan yllapitajan toimesta  
   
-  // Aiheiden listaussivu
-  $app->get('/aihepiiri', function(){
-    AihepiiriController::index();
-  });
+//  // Aiheiden listaussivu
+//  $app->get('/aihepiiri', function(){
+//    AihepiiriController::index();
+//  });
+//  
+//  $app->post('/aihepiiri', function(){
+//    AihepiiriController::store();
+//  });    
+//  
+//  // Aihepiirin lisäyslomakkeen näyttäminen
+//  $app->get('/aihepiiri/new', function(){
+//    AihepiiriController::create();	
+//  });
   
+  // vastausten haku aiheen perusteella
   $app->post('/aihepiiri', function(){
-    AihepiiriController::store();
-  });    
-  
-  // Aihepiirin lisäyslomakkeen näyttäminen
-  $app->get('/aihepiiri/new', function(){
-    AihepiiriController::create();	
-  });
-  
-  // Kysymyksen esittelysivu
-  $app->get('/aihepiiri/:id', function($id){
-    AihepiiriController::show($id);
+    AihepiiriController::show();
   });
   
   

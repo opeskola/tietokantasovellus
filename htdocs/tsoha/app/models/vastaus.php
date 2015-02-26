@@ -57,6 +57,25 @@ class Vastaus extends BaseModel{
     return null;
   }
   
+  // haetaan vastaukset aiheen perusteella
+  public static function find_answer_with_thema($aihe){
+    $vastaukset = array();
+    
+    $rows = DB::query('SELECT * FROM Vastaus WHERE aihe = :aihe', array('aihe' => $aihe));
+    
+    // Käydään kyselyn tuottamat rivit läpi
+    foreach($rows as $row){
+      $vastaukset[] = new Vastaus(array(
+        'id' => $row['id'],
+        'aihe' => $row['aihe'],
+        'sisalto' => $row['sisalto'],
+        'pvm' => $row['pvm']
+      ));
+    }
+    
+    return $vastaukset;
+  }
+  
   // haetaan vastaus kysymyksen id:n perusteella
   public static function find_answer_with_question_id($kysymys){
     $rows = DB::query('SELECT * FROM Vastaus WHERE kysymys = :kysymys LIMIT 1', array('kysymys' => $kysymys));  

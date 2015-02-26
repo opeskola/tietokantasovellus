@@ -1,33 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Aiheet järjestettynä kysymysten määrän mukaan</h1>
+  <h1>Kysymykset ja vastaukset</h1>
 
+  
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
-        <th>Aihe</th>
-        <th>Kysymysten määrä</th>
+        <th>Vastaus</th>
+        <th>Aihepiiri</th>
       </tr>
     </thead>
 
     <tbody>
-      {% for aihe in aiheet %}
+      {% for vastaus in vastaukset %}
         <tr>
-          <td>{{kysymys.sisalto}}</td>
-          <td>{{kysymys.opiskelijaNro}}</td>
-          <td>{{kysymys.pvm}}</td>
-          <td>
-              {% if kysymys.status %}
-                <label class="label label-success">Vastattu</label>
-              {% else %}
-                <label class="label label-danger">Vastaamatta</label>
-              {% endif %}
-          </td>
+          <td><a href="{{base_path}}/vastaus/{{vastaus.id}}">{{vastaus.sisalto}}</a></td>
+          <td><a href="{{base_path}}/vastaus/{{vastaus.id}}">{{vastaus.aihe}}></td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
 {% endblock %}
-
-
