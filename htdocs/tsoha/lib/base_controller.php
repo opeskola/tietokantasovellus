@@ -10,6 +10,12 @@
         $user = User::find($user_id);
 
         return $user;
+      }elseif(isset($_SESSION['ohjaaja'])){
+        $ohjaaja_id = $_SESSION['ohjaaja'];
+        // Pyydetään User-mallilta käyttäjä session mukaisella id:llä
+        $ohjaaja = Ohjaaja::find($ohjaaja_id);
+
+        return $ohjaaja;
       }
       return null;
     }

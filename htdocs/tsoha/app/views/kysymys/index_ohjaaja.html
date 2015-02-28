@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_ohjaaja.html" %}
 
 {% block content %}
   <h1>Usein kysytyt kysymykset</h1>
@@ -7,7 +7,7 @@
       <a href="{{base_path}}/index_ohjaajat" class="btn btn-primary">Hae kaikki kysymykset</a>
   </p>
   
-  <h4>Hae aiheen perusteella</h4>
+  <h4>Hae aiheen perusteella (vain kysymykset, joihin on vastattu)</h4>
   <form method="get" action="{{base_path}}/index_ohjaajat">
     <select name="aihe" class="form-control">
       <option value="1">Luokittelematon</option>

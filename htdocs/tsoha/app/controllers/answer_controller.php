@@ -29,7 +29,7 @@ class AnswerController extends BaseController{
   }
   
   public static function store(){
-    //self::check_logged_in();
+    self::check_ohjaaja_logged_in();
     // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
     $params = $_POST;
 
@@ -49,7 +49,7 @@ class AnswerController extends BaseController{
     //if(count($errors) == 0){
       // Vastaus on validi, hyva homma!
       $id = Vastaus::create($attributes);  
-      self::redirect_to('/kysymys/' . $kysymys_id, array('message' => 'Vastaus on lisätty!'));
+      self::redirect_to('/ohjaaja/kysymys/' . $kysymys_id, array('message' => 'Vastaus on lisätty!'));
     //}else{
     // Kysymyksessä oli jotain vikaa :(
     //  self::render_view('vastaus/new.html', array('errors' => $errors, 'attributes' => $attributes));
@@ -59,7 +59,7 @@ class AnswerController extends BaseController{
   
   // Vastauksen muokkaaminen (lomakkeen esittäminen)
   public static function edit($id){
-    //self::check_logged_in(); 
+    self::check_ohjaaja_logged_in(); 
     
     $vastaus = Vastaus::find_answer_with_question_id($id);
 
@@ -68,7 +68,7 @@ class AnswerController extends BaseController{
   
   // Vastauksen muokkaaminen (lomakkeen käsittely)
   public static function update($id){
-    //self::check_logged_in();  
+    self::check_ohjaaja_logged_in();  
     $params = $_POST;
     
     $kysymys_id = $params['id'];
@@ -86,7 +86,7 @@ class AnswerController extends BaseController{
     //}else{
       Vastaus::update($id, $attributes);
 
-      self::redirect_to('/kysymys' , array('message' => 'Vastausta on muokattu onnistuneesti!'));
+      self::redirect_to('/index_ohjaajat' , array('message' => 'Vastausta on muokattu onnistuneesti!'));
   }
   
 }

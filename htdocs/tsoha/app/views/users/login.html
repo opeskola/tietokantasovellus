@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Kirjaudu sisään</h1>
   
+<p>
+  <h1>Opiskelijan sisäänkirjautuminen</h1>
+  
+  <a href="{{base_path}}/ohjaaja">Tästä linkistä opinto-ohjaajan kirjautumiseen</a>
+</p>
+
   <!-- Ilmoitetaan, jos kayttajatunnus tai salasana on vaarin -->
   
   {% if error %}

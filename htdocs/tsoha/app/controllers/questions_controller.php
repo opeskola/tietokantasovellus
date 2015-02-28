@@ -139,7 +139,7 @@ class QuestionController extends BaseController{
   
   // Vastauslomakkeen näyttäminen
   public static function answer($id){
-    //self::check_logged_in();  
+    self::check_ohjaaja_logged_in();  
     $kysymys = Kysymys::find($id);
 
     self::render_view('kysymys/answer.html', array('kysymys' => $kysymys));

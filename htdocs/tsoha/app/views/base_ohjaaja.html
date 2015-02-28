@@ -31,22 +31,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+            
           <!-- Sovelluksen nimi -->
-          <a class="navbar-brand" href="{{base_path}}">Usein kysytyt kysymykset</a>
+          <a class="navbar-brand" href="{{base_path}}/index_ohjaajat">Usein kysytyt kysymykset</a>
         </div>
 
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="nav navbar-nav">
-            <!-- Navigaation linkit -->
-            <li><a href="{{base_path}}">Etusivu</a></li>
-          </ul>
-           
-          {% if ohjaaja_logged_in == false %}  
+            <li><a href="{{base_path}}/index_ohjaajat">Etusivu</a></li>
+          </ul>         
+            
+          {% if user_logged_in == false %}  
           <ul class="nav navbar-nav navbar-right">
             <li><a href="{{base_path}}/ohjaaja">Kirjaudu sisään</a></li>
           </ul>
           {% else %}
-          <form class="navbar-form navbar-right" method="post" action="{{base_path}}/ohjaaja">
+          <form class="navbar-form navbar-right" method="post" action="{{base_path}}/ohjaaja/logout">
             <button type="submit" class="btn btn-default">Kirjaudu ulos</button>
           </form>
           {% endif %}
@@ -57,18 +57,16 @@
     </nav>
 
     <div id="main-container">
-      <!-- Dynaaminen sisältö tulee tähän -->
+      
       {% block content %}{% endblock %}
     </div>
 
     {% block body %}
-      <!-- jQuery -->
+     
       <script src="{{base_path}}/vendor/jquery.min.js"></script>
-
-      <!-- Bootstrap (skripti-tiedosto) -->
+     
       <script src="{{base_path}}/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-      <!-- Oma skripti-tiedostomme -->
       <script src="{{base_path}}/assets/js/site.js"></script>
     {% endblock %}
   </body>

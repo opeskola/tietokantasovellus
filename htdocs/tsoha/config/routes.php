@@ -179,6 +179,6 @@
     OhjaajaController::handle_login();
   });
   
-  $app->post('/ohjaaja', function(){
+  $app->post('/ohjaaja/logout', function(){
     OhjaajaController::logout();
   });
