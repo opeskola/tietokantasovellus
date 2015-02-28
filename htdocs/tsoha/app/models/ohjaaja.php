@@ -11,6 +11,8 @@ class Ohjaaja extends BaseModel{
   public function authenticate($id, $salasana){
       $opintoOhjaajat = DB::query('SELECT * FROM OpintoOhjaaja WHERE id = :id AND salasana = :salasana', array('id' => $id, 'salasana' => $salasana));
       
+      // jos opinto-ohjaajaa ei loydy haetuilla tunnuksilla ja salasanalla, palautetaan FALSE
+      
       if (count($opintoOhjaajat) == 0){
           return FALSE;
       }

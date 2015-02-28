@@ -12,7 +12,6 @@ class UserController extends BaseController{
 
     $user = User::authenticate($params['opiskelijaNro'], $params['salasana']);
     
-    
     if(!$user){
       self::redirect_to('/login', array('error' => 'Väärä käyttäjätunnus tai salasana!'));
     }else{

@@ -2,7 +2,6 @@
 
 {% block content %}
   <h1>Kirjaudu sisään</h1>
-
   
   <!-- Ilmoitetaan, jos kayttajatunnus tai salasana on vaarin -->
   
@@ -11,8 +10,7 @@
       {{error}}
     </div>
   {% endif %}  
-  
-  
+   
   <!-- Kaikki lomakkeen elementit form-tagin sisään -->
   <form method="post" action="{{base_path}}/login">
     <!-- Tekstikenttä käyttäjätunnukselle -->

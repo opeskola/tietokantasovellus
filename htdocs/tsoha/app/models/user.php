@@ -14,8 +14,7 @@ class User extends BaseModel{
       // jos opiskelijaa ei loydy haetuilla tunnuksilla ja salasanalla, palautetaan FALSE
       
       if (count($opiskelijat) == 0){
-          return FALSE;
-          
+          return FALSE;         
       }
       
       if (count($opiskelijat) > 0){

@@ -25,12 +25,22 @@ class Kysymys extends BaseModel{
  }  
   
   // haetaan kaikki kysymykset tietokannasta
-  public static function all(){
+  public static function all($aihe){
+    
+    if ($aihe == NULL){
+        $query = 'SELECT Kysymys.id, Kysymys.sisalto, Kysymys.pvm, Kysymys.status, 
+            Vastaus.sisalto AS vastaus_sisalto FROM Kysymys LEFT JOIN Vastaus ON Kysymys.id = Vastaus.kysymys;'; 
+        $rows = DB::query($query);   
+    } else{
+        $query = 'SELECT Kysymys.id, Kysymys.sisalto, Kysymys.pvm, Kysymys.status, 
+            Vastaus.sisalto AS vastaus_sisalto FROM Kysymys LEFT JOIN Vastaus ON Kysymys.id = Vastaus.kysymys
+            WHERE Vastaus.aihe = :aihe;';
+        $rows = DB::query($query, array('aihe' => $aihe));
+    }
+    
+    
     $kysymykset = array();
-    // Kutsutaan luokan DB staattista metodia query
-    $rows = DB::query('SELECT Kysymys.id, Kysymys.sisalto, Kysymys.pvm, Kysymys.status, 
-        Vastaus.sisalto AS vastaus_sisalto FROM Kysymys LEFT JOIN Vastaus ON Kysymys.id = Vastaus.kysymys;');
-
+    
     // Käydään kyselyn tuottamat rivit läpi
     foreach($rows as $row){
       // Tämä on PHP:n hassu syntaksi alkion lisäämiseksi taulukkoon :)

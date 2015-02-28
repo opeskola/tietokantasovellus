@@ -2,19 +2,7 @@
 
 {% block content %}
   <h1>Usein kysytyt kysymykset</h1>
-
-  <p>
-    
-    <a href="{{base_path}}/kysymys/new" class="btn btn-success">Lisää kysymys</a>  
-     
-    <!--  
-
-    talla tavalla voi laittaa ehdon, etta henkilo ei voi painaa painiketta
-
-    {%if user.opiskelijaNro == 40001%}
-      <a href="{{base_path}}/kysymys/new" class="btn btn-success">Lisää kysymys</a>
-    {%endif%}-->
-  </p>
+  
   <h4>Hae aiheen perusteella</h4>
   <form method="get" action="{{base_path}}">
     <select name="aihe" class="form-control">

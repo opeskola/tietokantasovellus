@@ -1,10 +1,15 @@
 <?php
 
   
-  // Etusivu ( listaussivu)
+  // Etusivu (listaussivu opiskelijoille)
   $app->get('/', function(){
     QuestionController::index();
   });  
+  
+  // Etusivu (listaussivu opinto-ohjaajille)
+  $app->get('/index_ohjaajat', function(){
+    QuestionController::index_ohjaajat();
+  });    
   
   
   
@@ -154,43 +159,16 @@
   
   // opinto-ohjaajan sisaankirjautuminen ei toimi, joten tama pitaa fiksata
   
-  $app->get('/login_ohjaaja', function(){
+  $app->get('/ohjaaja', function(){
     // Kirjautumislomakkeen esittäminen
     OhjaajaController::login();
   });
 
-  $app->post('/login_ohjaaja', function(){
+  $app->post('/ohjaaja', function(){
     // Kirjautumisen käsittely
     OhjaajaController::handle_login();
   });
   
-  $app->post('/logout_ohjaaja', function(){
+  $app->post('/ohjaaja', function(){
     OhjaajaController::logout();
   });
-  
-  
-  // Testikamaa
-
-  $app->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
-  });
-  
-  $app->get('/suunnitelmat/login', function() {
-    HelloWorldController::login();
-  });
-  
-  $app->get('/suunnitelmat/new_questions_list', function() {
-    HelloWorldController::new_questions_list();
-  });
-  
-  $app->get('/suunnitelmat/themas', function() {
-    HelloWorldController::themas();
-  });
-  
-  $app->get('/suunnitelmat/make_question', function() {
-    HelloWorldController::make_question();
-  });
-  
-  $app->get('/suunnitelmat/first_page', function() {
-    HelloWorldController::first_page();
-  });  

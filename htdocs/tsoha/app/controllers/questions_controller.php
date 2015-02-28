@@ -4,10 +4,33 @@ class QuestionController extends BaseController{
   public static function index(){
     self::check_logged_in();
     
+    if(key_exists('aihe', $_GET)){
+        $aihe = $_GET['aihe'];
+    }else{
+        $aihe = NULL;
+    }
+
+    
     // Haetaan kaikki kysymykset tietokannasta
-    $kysymykset = Kysymys::all();
+    $kysymykset = Kysymys::all($aihe);
     // Renderöidään views/kysymys kansiossa sijaitseva tiedosto index.html muuttujan $kysymykset datalla
     self::render_view('kysymys/index.html', array('kysymykset' => $kysymykset));
+  }
+  
+  public static function index_ohjaajat(){
+    self::check_ohjaaja_logged_in();
+    
+    if(key_exists('aihe', $_GET)){
+        $aihe = $_GET['aihe'];
+    }else{
+        $aihe = NULL;
+    }
+
+    
+    // Haetaan kaikki kysymykset tietokannasta
+    $kysymykset = Kysymys::all($aihe);
+    // Renderöidään views/kysymys kansiossa sijaitseva tiedosto index.html muuttujan $kysymykset datalla
+    self::render_view('kysymys/index_ohjaaja.html', array('kysymykset' => $kysymykset));
   }
   
   public static function show($id){
