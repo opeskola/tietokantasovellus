@@ -4,16 +4,19 @@
   <h1>{{kysymys.sisalto}}</h1>
 
   <p>{{vastaus.sisalto}}</p>
-  <a class="btn btn-primary btn-sm" href="{{base_path}}/kysymys/{{kysymys.id}}/edit">Muokkaa kysymystä</a>
+  {% if kysymys.status %}
+    <a class="btn btn-primary btn-sm" href="{{base_path}}/kysymys/{{kysymys.id}}/edit_answer">Muokkaa vastausta</a>
+  {% endif %}
         
   <p></p>
+ 
+  <!-- Jos kysymykseen on jo vastattu, ei nayteta Vastaa-lomaketta -->
+        
   {% if kysymys.status == false %}
-    <form method="post" action="{{base_path}}/kysymys/{{kysymys.id}}/destroy" class="destroy-form" data-confirm="Oletko varma, että haluat poistaa kysymyksen?">
-      <button type="submit" class="btn btn-danger">Poista kysymys</button>
-    </form>
+    <p> 
+        <a href="{{base_path}}/kysymys/{{kysymys.id}}/vastaa" class="btn btn-success">Vastaa</a>
+    </p> 
   {% endif %}
-
-  <p></p>
   
   <ul>
     <li><strong>Kysytty:</strong>{{kysymys.pvm}}</li>
@@ -26,4 +29,5 @@
   </ul>  
   
 {% endblock %}
+
 

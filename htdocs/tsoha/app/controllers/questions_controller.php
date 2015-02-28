@@ -43,6 +43,18 @@ class QuestionController extends BaseController{
     $vastaus = Vastaus::find_answer_with_question_id($id);
     // Renderöidään views/kysymys kansiossa sijaitseva tiedosto index.html muuttujan $kysymykset datalla
     self::render_view('kysymys/show.html', array('kysymys' => $kysymys, 'vastaus' => $vastaus));
+  }
+  
+  public static function show_ohjaaja($id){
+    self::check_ohjaaja_logged_in();
+    
+    // Haetaan kysymys tietokannasta id:n perusteella
+    $kysymys = Kysymys::find($id);
+    
+    // Haetaan vastaus kysymyksen id:n perusteella
+    $vastaus = Vastaus::find_answer_with_question_id($id);
+    // Renderöidään views/kysymys kansiossa sijaitseva tiedosto index.html muuttujan $kysymykset datalla
+    self::render_view('kysymys/show_ohjaaja.html', array('kysymys' => $kysymys, 'vastaus' => $vastaus));
   } 
   
   // kysymyksen yksityiskohtaisemmat tiedot

@@ -5,7 +5,8 @@
 
   <p>
     
-    <a href="{{base_path}}/kysymys/new" class="btn btn-success">Lisää kysymys</a>  
+    <a href="{{base_path}}/kysymys/new" class="btn btn-success">Lisää kysymys</a>
+    <a href="{{base_path}}" class="btn btn-primary">Hae kaikki kysymykset</a>
      
     <!--  
 
@@ -15,7 +16,7 @@
       <a href="{{base_path}}/kysymys/new" class="btn btn-success">Lisää kysymys</a>
     {%endif%}-->
   </p>
-  <h4>Hae aiheen perusteella</h4>
+  <h4>Hae aiheen perusteella (vain kysymykset, joihin on vastattu)</h4>
   <form method="get" action="{{base_path}}">
     <select name="aihe" class="form-control">
       <option value="1">Luokittelematon</option>
@@ -28,6 +29,7 @@
       <button type="submit" class="btn btn-primary">Hae</button>
     </div>  
   </form>
+  
   
   <p></p>
   <p></p>

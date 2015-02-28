@@ -3,8 +3,12 @@
 {% block content %}
   <h1>Usein kysytyt kysymykset</h1>
   
+  <p>
+      <a href="{{base_path}}/index_ohjaajat" class="btn btn-primary">Hae kaikki kysymykset</a>
+  </p>
+  
   <h4>Hae aiheen perusteella</h4>
-  <form method="get" action="{{base_path}}">
+  <form method="get" action="{{base_path}}/index_ohjaajat">
     <select name="aihe" class="form-control">
       <option value="1">Luokittelematon</option>
       <option value="2">Vaihto-opiskelu</option>
@@ -31,7 +35,7 @@
     <tbody>
       {% for kysymys in kysymykset %}
         <tr>
-          <td><a href="{{base_path}}/kysymys/{{kysymys.id}}">{{kysymys.sisalto}}</a></td>
+          <td><a href="{{base_path}}/ohjaaja/kysymys/{{kysymys.id}}">{{kysymys.sisalto}}</a></td>
           <td>
               {% if kysymys.status %}
                 <label class="label label-success">Vastattu</label>

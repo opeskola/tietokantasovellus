@@ -65,6 +65,16 @@
   });
   
   
+  
+  
+  // Kysymyksen esittelysivu opinto-ohjaajille
+  $app->get('/ohjaaja/kysymys/:id', function($id){
+    QuestionController::show_ohjaaja($id);
+  }); 
+  
+  
+  
+  
   $app->get('/kysymys/:id/edit_answer', function($id){
     // Kysymykseen vastaaminen
     AnswerController::edit($id);
