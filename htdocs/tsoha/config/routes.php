@@ -174,7 +174,7 @@
 
   
   
-  // Tasta alkaa login_ohjaaja-funktiot (opinto-ohjaajille)
+  // Tasta alkaa login_ohjaaja-funktiot (opintoneuvojille)
   
   $app->get('/ohjaaja', function(){
     // Kirjautumislomakkeen esittäminen
