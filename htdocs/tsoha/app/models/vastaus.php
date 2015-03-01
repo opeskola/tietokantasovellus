@@ -1,26 +1,16 @@
 <?php
 
+// tassa on malli vastauksille
+
 class Vastaus extends BaseModel{
   // Attribuutit
   public $id, $vastaaja, $kysymys, $aihe, $sisalto, $pvm;
   // Konstruktori
   public function __construct($attributes){
     parent::__construct($attributes);
-  }
+  }   
   
-//  public function validate_vastaus_sisalto(){
-//    $errors = array();
-//
-//    if($this->sisalto == '' || $this->sisalto == null){
-//      $errors[] = 'Vastaus ei saa olla tyhjä!';
-//    }
-//    if(strlen($this->sisalto) > 2000){
-//      $errors[] = 'Vastauksen pituuden tulee olla enintään 2000 merkkiä!';
-//    }
-//
-//    return $errors;
-// }    
-  
+  // haetaan kaikki vastaukset tietokannasta
   public static function all(){
     $vastaukset = array();
     // Kutsutaan luokan DB staattista metodia query
@@ -39,6 +29,7 @@ class Vastaus extends BaseModel{
     return $vastaukset;
   }
   
+  // haetaan vastaus tietokannasta id:n perusteella
   public static function find($id){
     $rows = DB::query('SELECT * FROM Vastaus WHERE id = :id LIMIT 1', array('id' => $id));
 
@@ -83,11 +74,16 @@ class Vastaus extends BaseModel{
     if(count($rows) > 0){
       $row = $rows[0];
 
+      // tehdaan uusi muuttuja $date (koska talla tavalla saatiin timestamp 
+      // muokattua oikeaan muotoon. Jos laitetaan muotoon 'pvm = $row['pvm'], 
+      // niin tulostuu ylimaaraisia desimaalipilkkuja timestampin peraan.
+      $date = date_create($row['pvm']);
+      
       $vastaus = new Vastaus(array(
         'id' => $row['id'],
         'kysymys' => $row['kysymys'],
         'sisalto' => $row['sisalto'],
-        'pvm' => $row['pvm']
+        'pvm' => date_format($date, 'Y-m-d H:i:s')
       ));
 
       return $vastaus;
@@ -97,18 +93,19 @@ class Vastaus extends BaseModel{
       
   }
   
-  
-  
+  // paivitetaan vastaus 
   public static function update($id, $vastaus){
     DB::query('UPDATE Vastaus SET sisalto = :sisalto WHERE id = :id', array('id' => $id, 'sisalto' => $vastaus['sisalto']));
   }
   
+  // luodaan uusi vastaus
   public static function create($vastaus){ 
-        $rows = DB::query('INSERT INTO Vastaus (sisalto, kysymys, aihe, pvm) VALUES(:sisalto, :kysymys, :aihe, NOW()) RETURNING id', array('sisalto' => $vastaus['sisalto'], 'kysymys' => $vastaus['kysymys'], 'aihe' => $vastaus['aihe'])); 
+    $rows = DB::query('INSERT INTO Vastaus (sisalto, kysymys, aihe, pvm) VALUES(:sisalto, :kysymys, :aihe, NOW()) RETURNING id', array('sisalto' => $vastaus['sisalto'], 'kysymys' => $vastaus['kysymys'], 'aihe' => $vastaus['aihe'])); 
     $id = $rows[0]['id'];
     return $id;   
   }
   
+  // tuhotaan vastaus (tata ei tarvita lopullisessa versiossa)
   public static function destroy($id){ 
     DB::query('DELETE FROM Vastaus WHERE id = :id', array('id' => $id));
   } 

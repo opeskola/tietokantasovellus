@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Aihepiiri' => $baseDir . '/app/models/aihepiiri.php',
-    'AihepiiriController' => $baseDir . '/app/controllers/aihepiiri_controller.php',
     'AnswerController' => $baseDir . '/app/controllers/answer_controller.php',
     'BaseController' => $baseDir . '/lib/base_controller.php',
     'BaseModel' => $baseDir . '/lib/base_model.php',

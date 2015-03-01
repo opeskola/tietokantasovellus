@@ -7,6 +7,10 @@ class UserController extends BaseController{
       self::render_view('users/login.html');
   }
   
+  
+  // tarkastetaan ovatko kayttajatunnus ja salasana oikeita. Jos eivat ole, niin
+  // annetaan virheilmoitus ja pysytaan kirjautumissivulla. Jos tunnukset ovat 
+  // oikein, niin ohjataan etusivulle.
   public static function handle_login(){
     $params = $_POST;
 
@@ -21,6 +25,7 @@ class UserController extends BaseController{
     }
   }
   
+  // tassa on funktio opiskelijan uloskirjautumiseen
   public static function logout(){
     $_SESSION['user'] = null;
 

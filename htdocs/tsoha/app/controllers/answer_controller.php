@@ -1,5 +1,7 @@
 <?php
 
+// tassa on malli vastauksiin
+
 class AnswerController extends BaseController{
   public static function index(){
     //self::check_logged_in();
@@ -23,11 +25,13 @@ class AnswerController extends BaseController{
     self::render_view('vastaus/show.html', array('vastaus' => $vastaus));
   }
   
+  
   public static function create(){
     //self::check_logged_in();
     self::render_view('vastaus/new.html');
   }
   
+  // vastauksen varastointi
   public static function store(){
     self::check_ohjaaja_logged_in();
     // POST-pyynnön muuttujat sijaitsevat $_POST nimisessä assosiaatiolistassa
@@ -37,7 +41,7 @@ class AnswerController extends BaseController{
     
     Kysymys::set_status_true($kysymys_id);
     
-    $attributes = array( 
+    $attributes = array(
       'sisalto' => $params['vastaus'],
       'kysymys' => $params['id'],
       'aihe' => $params['aihe']

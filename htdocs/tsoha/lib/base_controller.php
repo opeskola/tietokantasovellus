@@ -1,7 +1,9 @@
 <?php
 
+// taman controllerin funktioita kaytetaan muissa kontrollereissa
   class BaseController{
 
+    // haetaan sisaankirjautunut kayttaja  
     public static function get_user_logged_in(){
       // Toteuta kirjautuneen käyttäjän haku tähän
       if(isset($_SESSION['user'])){
@@ -31,6 +33,8 @@
       return null;       
     }
 
+    
+    // tarkistetaan onko kayttaja (opiskelija) kirjautunut sisaan
     public static function check_logged_in(){
       // Toteuta kirjautumisen tarkistus tähän
       if(!isset($_SESSION['user'])){
@@ -38,6 +42,7 @@
       }
     }
     
+    // tarkistetaan onko opinto-ohjaaja kirjautunut sisaan
     public static function check_ohjaaja_logged_in(){
       if(!isset($_SESSION['ohjaaja'])){
         self::redirect_to('/ohjaaja', array('message' => 'Kirjaudu ensin sisään!'));

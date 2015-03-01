@@ -15,6 +15,8 @@
       }
     }
 
+    
+    // tassa funktiossa kerataan virheilmoitukset
     public function errors(){
       // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
       $errors = array();

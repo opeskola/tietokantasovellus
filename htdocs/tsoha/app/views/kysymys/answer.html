@@ -1,6 +1,8 @@
 {% extends "base_ohjaaja.html" %}
 
 {% block content %}
+
+
   <h1>{{kysymys.sisalto}}</h1>
 
   {% if errors %}
@@ -18,7 +20,7 @@
     <div class="form-group">
       <input type="hidden" name="id" value="{{kysymys.id}}"/>
     </div>
-      
+           
     <div>
       <label>Vastaus</label>
       <input name="vastaus" class="form-control" type="text"/>

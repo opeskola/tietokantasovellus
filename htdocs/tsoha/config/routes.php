@@ -13,8 +13,9 @@
   
   
   
-  // tasta alkaa kysymyksiin liittyvat toiminnot
+  // tasta alkavat kysymyksiin liittyvat reititykset
   
+  // kysymyksen varastointi
   $app->post('/kysymys', function(){
     QuestionController::store();
   });
@@ -39,33 +40,29 @@
     QuestionController::edit($id);
   });
   
+  // TAMA EI KAYTOSSA
   $app->get('/kysymys/:id/metadata', function($id){
     // Kysymyksen tarkemmat tiedot
     QuestionController::metadata($id);
   });
   
+  // Kysymyksen muokkaus
   $app->post('/kysymys/:id/edit', function($id){
     // Kysymyksen muokkaaminen
     QuestionController::update($id);
   });  
 
+  // Kysymyksen poisto
   $app->post('/kysymys/:id/destroy', function($id){
     // Kysymyksen poisto
     QuestionController::destroy($id);
   }); 
   
+  // Kysymykseen vastaaminen
   $app->get('/kysymys/:id/vastaa', function($id){
     // 
     QuestionController::answer($id);
   });   
-  
-  $app->post('/kysymys/:id/vastaa', function($id){
-    // 
-    AnswerController::store($id);
-  });
-  
-  
-  
   
   // Kysymyksen esittelysivu opinto-ohjaajille
   $app->get('/ohjaaja/kysymys/:id', function($id){
@@ -75,11 +72,21 @@
   
   
   
+  
+  // Tasta alkavat reititykset, jotka menevat vastauskontrolleriin
+  //
+  // Kysymyksen vastauksen varastointi
+  $app->post('/kysymys/:id/vastaa', function($id){
+    // 
+    AnswerController::store($id);
+  });  
+  
+  // Vastauksen editointi
   $app->get('/kysymys/:id/edit_answer', function($id){
-    // Kysymykseen vastaaminen
     AnswerController::edit($id);
   });
   
+  // vastauksen muokkaus
   $app->post('/vastaus/:id/edit', function($id){
     // Kysymyksen muokkaaminen
     AnswerController::update($id);
@@ -139,6 +146,8 @@
 //    AihepiiriController::create();	
 //  });
   
+  
+  // TAMA EI KAYTOSSA!
   // vastausten haku aiheen perusteella
   $app->post('/aihepiiri', function(){
     AihepiiriController::show();
@@ -165,9 +174,7 @@
 
   
   
-  // Tasta alkaa login_ohjaaja-funktiot (ohjaajille)
-  
-  // opinto-ohjaajan sisaankirjautuminen ei toimi, joten tama pitaa fiksata
+  // Tasta alkaa login_ohjaaja-funktiot (opinto-ohjaajille)
   
   $app->get('/ohjaaja', function(){
     // Kirjautumislomakkeen esittäminen

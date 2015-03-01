@@ -1,7 +1,16 @@
 <?php
 
+// Malli kysymyksiin
+
 class Kysymys extends BaseModel{
   // Attribuutit
+  //
+  // id = kysymyksen id
+  // opiskelijaNro = kysymyksen esittajan opiskelijanumero
+  // sisalto = kysymyksen sisalto
+  // pvm = kysymyksen paivamaara
+  // status = onko kysymykseen vastattu vai ei (true / false)
+  //
   public $id, $opiskelijaNro, $sisalto, $pvm, $status;
   // Konstruktori
   public function __construct($attributes){
@@ -24,7 +33,9 @@ class Kysymys extends BaseModel{
     return $errors;
  }  
   
-  // haetaan kaikki kysymykset tietokannasta
+  // haetaan kaikki kysymykset tietokannasta. Jos annetaan aihe-parametri, niin
+  // haetaan kyseiseen aiheeseen liittyvat kysymykset (vain ne kysymykset, joihin
+  // on vastattu)
   public static function all($aihe){
     
     if ($aihe == NULL){
@@ -37,13 +48,12 @@ class Kysymys extends BaseModel{
             WHERE Vastaus.aihe = :aihe;';
         $rows = DB::query($query, array('aihe' => $aihe));
     }
-    
-    
+       
     $kysymykset = array();
     
     // Käydään kyselyn tuottamat rivit läpi
     foreach($rows as $row){
-      // Tämä on PHP:n hassu syntaksi alkion lisäämiseksi taulukkoon :)
+      
       $kysymykset[] = new Kysymys(array(
         'id' => $row['id'],
         'sisalto' => $row['sisalto'],
@@ -61,11 +71,16 @@ class Kysymys extends BaseModel{
 
     if(count($rows) > 0){
       $row = $rows[0];
-
+     
+      // tehdaan uusi muuttuja $date (koska talla tavalla saadaan timestamp 
+      // muokattua oikeaan muotoon. Jos laitetaan muotoon 'pvm = $row['pvm'], 
+      // niin tulostuu ylimaaraisia desimaalipilkkuja timestampin peraan.
+      $date = date_create($row['pvm']);
+      
       $kysymys = new Kysymys(array(
         'id' => $row['id'],
         'sisalto' => $row['sisalto'],
-        'pvm' => $row['pvm'],
+        'pvm' => date_format($date, 'Y-m-d H:i:s'),
         'status' => $row['status']
       ));
 
@@ -74,8 +89,7 @@ class Kysymys extends BaseModel{
 
     return null;
   }
-  
-  
+   
   // asetetaan status arvoon true, jos kysymykseen on vastattu (default-arvo on,
   // etta status = false
   public static function set_status_true($id){
@@ -86,8 +100,7 @@ class Kysymys extends BaseModel{
   public static function update($id, $kysymys){
     DB::query('UPDATE Kysymys SET sisalto = :sisalto WHERE id = :id', array('id' => $id, 'sisalto' => $kysymys['sisalto']));
   }
-  
-  
+   
   // luodaan uusi kysymys
   public static function create($kysymys){ 
     $rows = DB::query('INSERT INTO Kysymys (sisalto, pvm) VALUES(:sisalto, NOW()) RETURNING id', array('sisalto' => $kysymys['sisalto'])); 

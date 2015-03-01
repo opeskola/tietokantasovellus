@@ -1,5 +1,11 @@
 <?php
 
+//
+// EI KAYTOSSA!
+//
+// Tata mallia ei tarvita lopullisessa versiossa. 
+//
+//
 class Aihepiiri extends BaseModel{
   // Attribuutit
   public $id, $aihe;
